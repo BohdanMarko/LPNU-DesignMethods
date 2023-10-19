@@ -1,0 +1,50 @@
+﻿@page "/vectors"
+
+@using DesignMethods.Desktop.Data
+
+<h3>Vector Operations</h3>
+
+<h5>Enter Vector Details</h5>
+
+Vector 1:
+<input @bind="Vector1.X" placeholder="X Coordinate" />
+<input @bind="Vector1.Y" placeholder="Y Coordinate" />
+<p>Length: @Vector1.GetLength()</p>
+
+<br />
+
+Vector 2:
+<input @bind="Vector2.X" placeholder="X Coordinate" />
+<input @bind="Vector2.Y" placeholder="Y Coordinate" />
+<p>Length: @Vector2.GetLength()</p>
+
+<br />
+<br />
+
+<button @onclick="CalculateSum">Calculate Sum</button>
+<button @onclick="CalculateDifference">Calculate Difference</button>
+
+@if (ResultVector != null)
+{
+    <h5>Result</h5>
+    <p>Vector: @ResultVector.ToString()</p>
+    <p>Length: @ResultVector.GetLength()</p>
+}
+
+@code {
+    Vector Vector1 = new Vector(0, 0);
+    Vector Vector2 = new Vector(0, 0);
+    Vector ResultVector = null;
+
+    void CalculateSum()
+    {
+        ResultVector = Vector1.Add(Vector2);
+        StateHasChanged(); // This ensures the UI updates with the new ResultVector value
+    }
+
+    void CalculateDifference()
+    {
+        ResultVector = Vector1.Subtract(Vector2);
+        StateHasChanged(); // This ensures the UI updates with the new ResultVector value
+    }
+}

@@ -1,18 +1,6 @@
-﻿Vector A = new(1, 2);
-Vector B = new(3, 4);
+﻿namespace DesignMethods.Desktop.Data;
 
-Vector C = A.Add(B);
-
-Console.WriteLine(C);
-
-Vector D = A.Subtract(B);
-
-Console.WriteLine(D);
-
-Console.WriteLine(A.GetLength());
-
-
-public sealed class Vector
+public class Vector
 {
     public string Name { get; init; }
     public double X { get; set; }
@@ -20,7 +8,11 @@ public sealed class Vector
 
     public Vector(double x, double y) => (X, Y) = (x, y);
 
-    public double GetLength() => Math.Round(Math.Sqrt(X * X + Y * Y), 3);
+    public double GetLength()
+    {
+        if (X == 0 && Y == 0) return 0;
+        return Math.Round(Math.Sqrt(X * X + Y * Y), 3);
+    }
 
     public Vector Add(Vector v) => new(X + v.X, Y + v.Y);
 
