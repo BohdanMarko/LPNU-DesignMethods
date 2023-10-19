@@ -1,5 +1,4 @@
-﻿using DesignMethods.Desktop.Data;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace DesignMethods.Desktop
 {
@@ -21,8 +20,6 @@ namespace DesignMethods.Desktop
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
-
-            builder.Services.AddSingleton<WeatherForecastService>();
 
             return builder.Build();
         }

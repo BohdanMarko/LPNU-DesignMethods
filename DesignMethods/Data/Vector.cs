@@ -2,7 +2,6 @@
 
 public class Vector
 {
-    public string Name { get; init; }
     public double X { get; set; }
     public double Y { get; set; }
 
@@ -14,9 +13,9 @@ public class Vector
         return Math.Round(Math.Sqrt(X * X + Y * Y), 3);
     }
 
-    public Vector Add(Vector v) => new(X + v.X, Y + v.Y);
+    public Vector Add(Vector v) => new Vector(X + v.X, Y + v.Y);
 
-    public Vector Subtract(Vector v) => new(X - v.X, Y - v.Y);
+    public Vector Subtract(Vector v) => new Vector(X - v.X, Y - v.Y);
 
-    public override string ToString() => $"{Name}({X}, {Y})";
+    public override string ToString() => $"(X = {X}, Y = {Y})";
 }
