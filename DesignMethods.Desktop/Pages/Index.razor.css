@@ -1,0 +1,17 @@
+﻿.fullscreen-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1; /* This ensures the GIF is behind your content */
+    background: url('/gif/mao-ze-dong-waving.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.content-on-top-of-gif {
+    position: relative;
+    z-index: 1;
+    color: white; /* or any other color depending on the GIF */
+    /* Add other styles as needed, e.g., padding, background shading, etc. */
+}
