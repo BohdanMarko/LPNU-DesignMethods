@@ -2,36 +2,50 @@
 
 @using DesignMethods.Desktop.Data
 
-<h3>Vector Operations</h3>
+<div class="vector-operations">
 
-<h5>Enter Vector Details</h5>
+    <h3>Vector Operations</h3>
 
-Vector 1:
-<input @bind="Vector1.X" placeholder="X Coordinate" />
-<input @bind="Vector1.Y" placeholder="Y Coordinate" />
-<p>Length: @Vector1.GetLength()</p>
+    <h5>Enter Vector Details</h5>
 
-<br />
+    <div class="vector-input">
+        Vector 1:
+        <div class="coord">
+            <label for="vector1X">X:</label>
+            <input id="vector1X" @bind="Vector1.X" placeholder="X Coordinate" />
+        </div>
+        <div class="coord">
+            <label for="vector1Y">Y:</label>
+            <input id="vector1Y" @bind="Vector1.Y" placeholder="Y Coordinate" />
+        </div>
+        <p>Length: @Vector1.GetLength()</p>
+    </div>
 
-Vector 2:
-<input @bind="Vector2.X" placeholder="X Coordinate" />
-<input @bind="Vector2.Y" placeholder="Y Coordinate" />
-<p>Length: @Vector2.GetLength()</p>
+    <div class="vector-input">
+        Vector 2:
+        <div class="coord">
+            <label for="vector2X">X:</label>
+            <input id="vector2X" @bind="Vector2.X" placeholder="X Coordinate" />
+        </div>
+        <div class="coord">
+            <label for="vector2Y">Y:</label>
+            <input id="vector2Y" @bind="Vector2.Y" placeholder="Y Coordinate" />
+        </div>
+        <p>Length: @Vector2.GetLength()</p>
+    </div>
 
-<br />
+    <button @onclick="CalculateSum">Calculate Sum</button>
+    <button @onclick="CalculateDifference">Calculate Difference</button>
 
-<button @onclick="CalculateSum">Calculate Sum</button>
-<button @onclick="CalculateDifference">Calculate Difference</button>
-
-<br />
-<br />
-
-@if (ResultVector != null)
-{
-    <h5>Result</h5>
-    <p>Vector: @ResultVector.ToString()</p>
-    <p>Length: @ResultVector.GetLength()</p>
-}
+    @if (ResultVector != null)
+    {
+        <div class="results">
+            <h5>Result</h5>
+            <p>Vector: @ResultVector.ToString()</p>
+            <p>Length: @ResultVector.GetLength()</p>
+        </div>
+    }
+</div>
 
 @code {
     Vector Vector1 = new Vector(0, 0);
@@ -41,12 +55,12 @@ Vector 2:
     void CalculateSum()
     {
         ResultVector = Vector1.Add(Vector2);
-        StateHasChanged(); // This ensures the UI updates with the new ResultVector value
+        StateHasChanged();
     }
 
     void CalculateDifference()
     {
         ResultVector = Vector1.Subtract(Vector2);
-        StateHasChanged(); // This ensures the UI updates with the new ResultVector value
+        StateHasChanged();
     }
 }
